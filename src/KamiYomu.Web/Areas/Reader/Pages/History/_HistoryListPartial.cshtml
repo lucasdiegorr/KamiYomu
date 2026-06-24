@@ -22,7 +22,7 @@
 
 @if (Model.GroupedHistory.Any())
 {
-    <div hx-get="/Reader/History?handler=Scroll&offset=@Model.NextOffset"
+    <div hx-get="@Url.Page("/History/Index", new { area = "Reader", handler = "Scroll", offset = Model.NextOffset })"
          hx-trigger="revealed"
          hx-swap="afterend"
          hx-indicator="#load-indicator"
