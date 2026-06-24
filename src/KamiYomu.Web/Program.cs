@@ -21,6 +21,7 @@ using KamiYomu.Web.Infrastructure.Services.Interfaces;
 using KamiYomu.Web.Middlewares;
 using KamiYomu.Web.Worker;
 using KamiYomu.Web.Worker.Interfaces;
+using KamiYomu.Web.Extensions;
 
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -222,6 +223,8 @@ if (!string.IsNullOrEmpty(pathBase))
 {
     app.UsePathBase(pathBase);
 }
+
+UriExtensions.SetHttpContextAccessor(app.Services.GetRequiredService<IHttpContextAccessor>());
 
 app.UseResponseCompression();
 app.UseStaticFiles();

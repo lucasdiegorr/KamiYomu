@@ -1,9 +1,18 @@
 using System.Net;
 
+using Microsoft.AspNetCore.Http;
+
 namespace KamiYomu.Web.Extensions;
 
 public static class UriExtensions
 {
+    private static IHttpContextAccessor? _httpContextAccessor;
+
+    internal static void SetHttpContextAccessor(IHttpContextAccessor? accessor)
+    {
+        _httpContextAccessor = accessor;
+    }
+
     public static bool IsValidImageUri(this Uri uri)
     {
         if (uri == null || !uri.IsAbsoluteUri)
@@ -47,9 +56,11 @@ public static class UriExtensions
 
     public static Uri ToInternalImageUrl(this Uri uri)
     {
-        return !uri.IsValidImageUri()
-            ? uri
-            : new Uri($"/Libraries/Collection/Index?handler=Image&uri={uri.ToEncodedString()}", UriKind.Relative);
+        if (!uri.IsValidImageUri())
+            return uri;
+
+        var pathBase = _httpContextAccessor?.HttpContext?.Request.PathBase ?? "";
+        return new Uri($"{pathBase}/Libraries/Collection/Index?handler=Image&uri={uri.ToEncodedString()}", UriKind.Relative);
     }
 
 
