@@ -26,7 +26,7 @@
 </div>
 <div class="modal-footer">
     <form method="post"
-          hx-post="/Libraries/Downloads/Index?handler=RemoveFromCollection"
+          hx-post="@Url.Page("/Downloads/Index", new { area = "Libraries", handler = "RemoveFromCollection" })"
           hx-target="#@Model.RefreshElementId"
           hx-swap="innerHTML">
         @Html.AntiForgeryToken()

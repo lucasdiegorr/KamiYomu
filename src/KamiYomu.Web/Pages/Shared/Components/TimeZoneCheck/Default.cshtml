@@ -1,4 +1,4 @@
-<div hx-post="/Index?handler=SetTimeZone"
+<div hx-post="@Url.Page("/Index", new { handler = "SetTimeZone" })"
      hx-trigger="load[checkTimeZoneCookie()]"
      hx-swap="none"
      hx-vals="js:{ tz: Intl.DateTimeFormat().resolvedOptions().timeZone }">

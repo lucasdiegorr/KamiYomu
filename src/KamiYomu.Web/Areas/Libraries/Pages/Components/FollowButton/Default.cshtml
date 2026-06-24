@@ -3,7 +3,7 @@
 @model FollowButtonViewModel
 <button id="followBtn"
         class="btn btn-sm @(Model.IsFollowing ? "btn-success" : "btn-outline-secondary")"
-        hx-post="/Libraries/Collection/Dialogs/DownloadStatus?handler=ToggleFollowing"
+        hx-post="@Url.Page("/Collection/Dialogs/DownloadStatus", new { area = "Libraries", handler = "ToggleFollowing" })"
         hx-vals='{
             "FollowButtonViewModel.LibraryId": "@Model.LibraryId",
             "FollowButtonViewModel.IsFollowing": "@Model.IsFollowing.ToString().ToLower()"

@@ -13,7 +13,7 @@
 
 
 <form enctype="multipart/form-data"
-      hx-post="/Settings/CrawlerAgents/Create?handler=Upload"
+      hx-post="@Url.Page("/CrawlerAgents/Create/Index", new { area = "Settings", handler = "Upload" })"
       hx-target="#crawler-editor"
       hx-swap="innerHTML"
       class="needs-validation"

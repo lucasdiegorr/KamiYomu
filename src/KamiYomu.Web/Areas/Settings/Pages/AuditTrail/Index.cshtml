@@ -24,7 +24,7 @@
         term.open(document.getElementById("terminal"));
         fitAddon.fit();
 
-        const eventSource = new EventSource("/Settings/AuditTrail/Index?handler=LogStream");
+        const eventSource = new EventSource('@Url.Page("/AuditTrail/Index", new { area = "Settings", handler = "LogStream" })');
 
         eventSource.onmessage = (e) => {
             let line = e.data;

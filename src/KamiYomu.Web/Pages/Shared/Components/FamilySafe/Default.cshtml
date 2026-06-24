@@ -12,7 +12,7 @@
       asp-page="/Index" 
       asp-page-handler="FamilySafe" novalidate>
     @Html.AntiForgeryToken()
-    <input type="hidden" id="family-safe-return-url" name="returnUrl" value="@($"{Context.Request.Path}{Context.Request.QueryString}")" />
+    <input type="hidden" id="family-safe-return-url" name="returnUrl" value="@($"{Context.Request.PathBase}{Context.Request.Path}{Context.Request.QueryString}")" />
     <button type="submit"
             class="btn @Model.ButtonClass btn-sm d-flex align-items-center shadow-sm rounded-pill px-3 justify-content-center"
             style="border-width: 1px;"

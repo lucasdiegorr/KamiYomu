@@ -14,7 +14,7 @@
 </div>
 <div class="modal-footer">
     <form method="post"
-          hx-post="/Settings/CrawlerAgents/Dialogs/DeleteConfirm"
+          hx-post="@Url.Page("/CrawlerAgents/Dialogs/DeleteConfirm", new { area = "Settings" })"
           hx-target="#crawler-agent-list"
           hx-swap="innerHtml">
         @Html.AntiForgeryToken()

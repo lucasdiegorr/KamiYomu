@@ -33,7 +33,7 @@
                             @I18n.Version:
 
                             <select class="form-select form-select-sm ms-2"
-                                    hx-get="/Settings/Add-ons/Index?handler=PackageItem&sourceId=@Model.SourceId&packageId=@Model.Id"
+                                    hx-get="@Url.Page("/Add-ons/Index", new { area = "Settings", handler = "PackageItem", sourceId = Model.SourceId, packageId = Model.Id })"
                                     hx-target="#@Model.GetCardId()"
                                     hx-trigger="change"
                                     hx-swap="outerHTML"
