@@ -40,7 +40,7 @@
             <a asp-area="Reader" asp-page="/MangaReader/Index"
                asp-route-chapterDownloadId="@Model.ChapterProgress.ChapterDownloadId"
                asp-route-libraryId="@Model.Library.Id"
-               asp-route-returnUrl="@($"{Context.Request.Path}{Context.Request.QueryString}")"
+               asp-route-returnUrl="@($"{Context.Request.PathBase}{Context.Request.Path}{Context.Request.QueryString}")"
                class="btn btn-sm btn-success rounded-circle">
                 <i class="bi bi-play-fill"></i>
             </a>
