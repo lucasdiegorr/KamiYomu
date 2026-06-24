@@ -217,6 +217,12 @@ using (IServiceScope appScoped = app.Services.CreateScope())
     _ = app.UseRequestLocalization(localizationOptions.Value);
 }
 
+string? pathBase = app.Configuration["PathBase"];
+if (!string.IsNullOrEmpty(pathBase))
+{
+    app.UsePathBase(pathBase);
+}
+
 app.UseResponseCompression();
 app.UseStaticFiles();
 app.UseRouting();
